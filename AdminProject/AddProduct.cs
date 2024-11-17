@@ -48,5 +48,26 @@ namespace AdminProject
             }
             return (count);
         }
+
+
+        public void getData(string connectionDb)
+        {
+            string query = "select p.Name,p.Description,p.Image_url,p.Price,p.ID,c.Name as 'CategoryName' from Category c\r\njoin Product p\r\non c.ID=p.Category_ID";
+            using (SqlConnection connection = new SqlConnection(connectionDb))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("\t{0}\t{1}\t{2}\t{3}\t{4}\t{5}", reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
+                }
+                reader.Close();
+            }
+
+        }
+
     }
+
+
 }

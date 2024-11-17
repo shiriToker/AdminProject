@@ -15,8 +15,11 @@ namespace AdminProject
         {
             string connection = "data source=srv2\\pupils;initial catalog=Web_Api_328306782;Integrated Security=SSPI;Persist Security Info=False;TrustServerCertificate=true";
             AddProduct product = new AddProduct();
-            int result=product.AddNewProduct(connection);
-            Console.WriteLine($"{result} lines are affected");
+            //int result=product.AddNewProduct(connection);
+            //Console.WriteLine($"{result} lines are affected");
+            //Console.ReadLine();
+            product.getData(connection);
+            Console.ReadLine();
         }
     }
 }
